@@ -11,13 +11,18 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    border: 5px solid red;
 }
 
 header {
     background-color: #333;
     color: white;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    border: 5px solid blue;
 }
 
 .logo h1 {
@@ -26,11 +31,12 @@ header {
 
 nav {
     margin-top: 10px;
+    border: 5px solid green;
 }
 
 .menu {
     list-style: none;
-    display: flex;
+    display: none;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -45,10 +51,27 @@ nav {
     padding: 5px 10px;
 }
 
+.hamburguesa {
+    display: flex;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+}
+
 footer {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 10px;
     margin-top: 20px;
+    border-style: solid;
+    border-color: black;
+}
+.noticias-principales {
+    border: 5px solid green;
+}
+.noticias-secundarias{
+    border: 5px solid red;
 }
