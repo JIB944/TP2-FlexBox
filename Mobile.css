@@ -1,0 +1,39 @@
+/* Estilos específicos para mobile */
+.hamburguesa {
+    display: block;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.noticias-principales {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.noticia img {
+    width: 100%;
+    height: auto;
+}
+
+.noticia h2 {
+    margin-top: 5px;
+}
+
+.noticias-secundarias {
+    margin-top: 20px;
+}
+
+.noticia-secundaria {
+    margin-bottom: 10px;
+}
+
+.publicidad {
+    margin-top: 20px;
+    text-align: center;
+}

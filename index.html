@@ -6,6 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (min-width: 768px)">
+    <link rel="stylesheet" href="css/desktop.css" media="screen and (min-width: 1024px)">
 </head>
 <body>
     <header>
@@ -26,6 +29,7 @@
         </nav>
     </header>
     <main>
+        <!-- inicio section 1 -->
         <section class="noticias-principales">
             <article class="noticia">
                 <img src="images/news1.jpg" alt="Noticia principal 1">
@@ -38,18 +42,30 @@
                 <p>Breve descripción de la noticia principal 2. <a href="#">Leer más...</a></p>
             </article>
         </section>
-        <section>
-            <article></article>
-            <article></article>
-            <article></article>
+        <!-- fin section 1 -->
+        <!-- inicio section 2  -->
+        <section class="noticias-secundarias">
+            <article class="noticia-secundaria">
+                <h3>Título de la noticia secundaria 1</h3>
+                <a href="#">Leer más...</a>
+            </article>
+            <article class="noticia-secundaria">
+                <h3>Título de la noticia secundaria 2</h3>
+                <a href="#">Leer más...</a>
+            </article>
+            <article class="noticia-secundaria">
+                <h3>Título de la noticia secundaria 3</h3>
+                <a href="#">Leer más...</a>
+            </article>
         </section>
-        <content>
-
+        <!-- fin section 2 -->
+        <content class="publicidad">
+            <h2>Publicidad</h2>
+            <img src="images/ad.jpg" alt="Publicidad">
         </content>
-
     </main>
     <footer>
-
+        <p>&copy; 2024 La Posta. Todos los derechos reservados.</p>
     </footer>
     
 </body>

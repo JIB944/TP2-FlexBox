@@ -1,0 +1,36 @@
+/* Estilos específicos para tablets */
+@media (min-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .menu {
+        justify-content: flex-end;
+    }
+
+    .main {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .noticias-principales {
+        flex: 2;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .noticias-secundarias {
+        flex: 1;
+        margin-left: 20px;
+    }
+
+    .publicidad {
+        flex: 1;
+        margin-left: 20px;
+    }
+
+    .hamburguesa {
+        display: none;
+    }
+}
