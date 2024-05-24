@@ -1,9 +1,11 @@
 /* Estilos específicos para desktop */
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
     .main {
-        max-width: 1200px;
+        max-width: 1920px;
         margin: 0 auto;
         background-color: orange;
+        box-sizing: content-box;
+    width: 100%;
 
     }
 
