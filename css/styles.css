@@ -79,10 +79,6 @@ footer {
     margin-top: 20px;
 }
 
-.noticias-principales{
-    
-    
-}
 .noticia1{
     
     
@@ -161,6 +157,16 @@ h2.intro{
     margin: 10px;
 }
 
+/*
+#im{
+    display: flex;
+    justify-content: space-between;
+}
+/*
+.noticias-secundarias{
+    display: flex;
+    flex-direction: column;
+}*/
 
 
 
