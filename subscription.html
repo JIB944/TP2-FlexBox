@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suscripción - La Posta</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/mobile.css" media="screen and (min-width: 360px)">
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (min-width: 768px)">
+    <link rel="stylesheet" href="css/desktop.css" media="screen and (min-width: 1024px)">
+    <link rel="stylesheet" href="css/subscription.css">
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>La Posta</h1>
+            <p>Fecha: 06 de junio 2024</p>
+        </div>
+        <nav>
+            <div class="hamburguesa"><a href="#">☰</a></div>
+            <ul class="menu">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Nacional</a></li>
+                <li><a href="#">Internacional</a></li>
+                <li><a href="#">Deportes</a></li>
+                <li><a href="#">Entretenimiento</a></li>
+                <li><a href="#">Economía</a></li>
+                <li><a href="#">Política</a></li>
+                <li><a href="#">Finanzas</a></li>
+                <li><a href="#">Cultura</a></li>
+                <li><a href="#">Tecnología</a></li>
+                <li><a href="#">Clasificados</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="subscription-form">
+            <h2>Formulario de Suscripción</h2>
+            <form id="subscriptionForm" class="form-container">
+                <div class="form-group">
+                    <label for="fullname">Nombre Completo</label>
+                    <input type="text" id="fullname" name="fullname">
+                    <span class="error-message" id="fullname-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password">
+                    <span class="error-message" id="password-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Repetir Contraseña</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword">
+                    <span class="error-message" id="confirmPassword-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="age">Edad</label>
+                    <input type="number" id="age" name="age">
+                    <span class="error-message" id="age-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="text" id="phone" name="phone">
+                    <span class="error-message" id="phone-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="address">Dirección</label>
+                    <input type="text" id="address" name="address">
+                    <span class="error-message" id="address-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="city">Ciudad</label>
+                    <input type="text" id="city" name="city">
+                    <span class="error-message" id="city-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="postalCode">Código Postal</label>
+                    <input type="text" id="postalCode" name="postalCode">
+                    <span class="error-message" id="postalCode-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="dni">DNI</label>
+                    <input type="text" id="dni" name="dni">
+                    <span class="error-message" id="dni-error"></span>
+                </div>
+                <div class="form-group">
+                    <button type="button" id="submitBtn">Enviar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 La Posta. Todos los derechos reservados.</p>
+    </footer>
+    <script>
+        document.getElementById('fullname').addEventListener('blur', validateFullName);
+        document.getElementById('email').addEventListener('blur', validateEmail);
+        document.getElementById('password').addEventListener('blur', validatePassword);
+        document.getElementById('confirmPassword').addEventListener('blur', validateConfirmPassword);
+        document.getElementById('age').addEventListener('blur', validateAge);
+        document.getElementById('phone').addEventListener('blur', validatePhone);
+        document.getElementById('address').addEventListener('blur', validateAddress);
+        document.getElementById('city').addEventListener('blur', validateCity);
+        document.getElementById('postalCode').addEventListener('blur', validatePostalCode);
+        document.getElementById('dni').addEventListener('blur', validateDNI);
+
+        const fields = ['fullname', 'email', 'password', 'confirmPassword', 'age', 'phone', 'address', 'city', 'postalCode', 'dni'];
+
+        fields.forEach(field => {
+            document.getElementById(field).addEventListener('focus', () => {
+                document.getElementById(field + '-error').innerText = '';
+            });
+        });
+
+        document.getElementById('submitBtn').addEventListener('click', () => {
+            const errors = fields.map(field => window['validate' + capitalize(field)]());
+
+            if (errors.every(error => error === '')) {
+                const formData = fields.reduce((acc, field) => {
+                    acc[field] = document.getElementById(field).value;
+                    return acc;
+                }, {});
+
+                alert(`Formulario enviado:\n${JSON.stringify(formData, null, 2)}`);
+            } else {
+                alert('Errores en el formulario:\n' + errors.filter(error => error !== '').join('\n'));
+            }
+        });
+
+        function capitalize(s) {
+            return s.charAt(0).toUpperCase() + s.slice(1);
+        }
+
+        function validateFullName() {
+            const fullname = document.getElementById('fullname').value;
+            const error = fullname.length > 6 && fullname.includes(' ') ? '' : 'Nombre completo debe tener más de 6 letras y al menos un espacio.';
+            document.getElementById('fullname-error').innerText = error;
+            return error;
+        }
+
+        function validateEmail() {
+            const email = document.getElementById('email').value;
+            const error = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? '' : 'Email debe tener un formato válido.';
+            document.getElementById('email-error').innerText = error;
+            return error;
+        }
+
+        function validatePassword() {
+            const password = document.getElementById('password').value;
+            const error = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password) ? '' : 'Contraseña debe tener al menos 8 caracteres, incluyendo letras y números.';
+            document.getElementById('password-error').innerText = error;
+            return error;
+        }
+
+        function validateConfirmPassword() {
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const password = document.getElementById('password').value;
+            const error = confirmPassword === password ? '' : 'Las contraseñas no coinciden.';
+            document.getElementById('confirmPassword-error').innerText = error;
+            return error;
+        }
+
+    
+        function validateAge() {
+            const age = parseInt(document.getElementById('age').value, 10);
+            const error = !isNaN(age) && age >= 18 ? '' : 'Edad debe ser un número entero mayor o igual a 18.';
+            document.getElementById('age-error').innerText = error;
+            return error;
+        }
+
+        function validatePhone() {
+            const phone = document.getElementById('phone').value;
+            const error = /^\d{7,}$/.test(phone) ? '' : 'Teléfono debe tener al menos 7 dígitos, sin espacios, guiones ni paréntesis.';
+            document.getElementById('phone-error').innerText = error;
+            return error;
+        }
+
+        function validateAddress() {
+            const address = document.getElementById('address').value;
+            const error = address.length > 5 && address.includes(' ') ? '' : 'Dirección debe tener al menos 5 caracteres, con letras, números y un espacio.';
+            document.getElementById('address-error').innerText = error;
+            return error;
+        }
+
+        function validateCity() {
+            const city = document.getElementById('city').value;
+            const error = city.length >= 3 ? '' : 'Ciudad debe tener al menos 3 caracteres.';
+            document.getElementById('city-error').innerText = error;
+            return error;
+        }
+
+        function validatePostalCode() {
+            const postalCode = document.getElementById('postalCode').value;
+            const error = postalCode.length >= 3 ? '' : 'Código Postal debe tener al menos 3 caracteres.';
+            document.getElementById('postalCode-error').innerText = error;
+            return error;
+        }
+
+        function validateDNI() {
+            const dni = document.getElementById('dni').value;
+            const error = /^\d{7,8}$/.test(dni) ? '' : 'DNI debe tener 7 u 8 dígitos.';
+            document.getElementById('dni-error').innerText = error;
+            return error;
+        }
+    </script>
+</body>
+</html>
