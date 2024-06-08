@@ -1,4 +1,4 @@
-/* Estilos específicos para tablets */
+/* Estilos para tablets */
 @media (min-width: 768px) {
     header {
         flex-direction: row;
